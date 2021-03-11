@@ -11,7 +11,5 @@ namespace EmployeeWage
         void addCompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMnth);
         void computeEmpWage();
 
-        int getTotalWage(string company);
-
     }
 }
