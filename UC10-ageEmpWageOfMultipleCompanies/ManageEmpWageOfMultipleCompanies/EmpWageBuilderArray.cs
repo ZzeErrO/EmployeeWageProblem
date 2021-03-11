@@ -4,34 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeWage
+namespace ManageEmpWageOfMultipleCompanies
 {
-    public class EmpWageBuilderObject : IComputeEmpWage
+    class EmpWageBuilderArray
     {
         public const int IS_PART_TIME = 1;
         public const int IS_FULL_TIME = 2;
 
-        private LinkedList<CompanyEmpWage> companyEmpWagesList;
-        private Dictionary<string, CompanyEmpWage> companyToEmpWageMap;
-
-        public EmpWageBuilderObject()
+        private int numOfCompany = 0;
+        private CompanyEmpWage[] companyEmpWageArray;
+        public EmpWageBuilderArray()
         {
-            this.companyEmpWagesList = new LinkedList<CompanyEmpWage>();
-            this.companyToEmpWageMap = new Dictionary<string, CompanyEmpWage>();
+            this.companyEmpWageArray = new CompanyEmpWage[5];
         }
-        public void addCompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMnth)
+
+        public void addCompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
         {
-            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMnth);
-            this.companyEmpWagesList.AddLast(companyEmpWage);
-            this.companyToEmpWageMap.Add(company, companyEmpWage);
+            companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+            numOfCompany++;
         }
 
         public void computeEmpWage()
         {
-            foreach (var companyEmpWage in this.companyEmpWagesList)
+            for (int i = 0; i < numOfCompany; i++)
             {
-                companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
-                Console.WriteLine(companyEmpWage.toString());
+                companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(this.companyEmpWageArray[i]));
+                Console.WriteLine(this.companyEmpWageArray[i].toString());
             }
         }
 
@@ -63,11 +61,6 @@ namespace EmployeeWage
 
             }
             return totalEmpHrs * companyEmpWage.empRatePerHour;
-        }
-
-        public int getTotalWage(string company)
-        {
-            return this.companyToEmpWageMap[company].totalEmpWage;
         }
 
     }

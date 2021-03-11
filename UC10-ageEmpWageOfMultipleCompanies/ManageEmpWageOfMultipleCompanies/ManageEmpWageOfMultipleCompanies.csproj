@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6EE25DA0-15EB-4730-910F-22A708AFD5C1}</ProjectGuid>
+    <ProjectGuid>{08326644-907B-467A-96F3-3BBA6D532003}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EmployeeWage</RootNamespace>
-    <AssemblyName>EmployeeWage</AssemblyName>
+    <RootNamespace>ManageEmpWageOfMultipleCompanies</RootNamespace>
+    <AssemblyName>ManageEmpWageOfMultipleCompanies</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,8 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompanyEmpWage.cs" />
-    <Compile Include="EmpWageBuilderObject.cs" />
-    <Compile Include="IComputeEmpWage.cs" />
+    <Compile Include="EmpWageBuilderArray.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
